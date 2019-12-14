@@ -20,7 +20,30 @@ module.exports = {
                 test: /\.js$/,
                 include: /src|node_modules[/\\]/,
                 loader: "babel-loader"
-            }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                     {
+                         loader: 'style-loader'  // 将打包后的css代码以<style>标签形式添加到页面头部
+                     },
+                     {
+                         loader: 'css-loader'    // 用于加载css文件（并没有添加到页面
+                     }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192,
+                      name: 'img/[name].[hash:7].[ext]'
+                    }
+                  }
+                ]
+              }
         ]
     },
 

@@ -10,6 +10,14 @@ npm run build:直接编译
 
 todo:
 
+1.加载css   ---ok
+2.加载外部图片   ---ok
+3.base64图片   ---ok
+4.分离开发配置与生产配置
+
+参考：https://github.com/dtdths/webpack-html
+
+
 
 -----------------------------
 
