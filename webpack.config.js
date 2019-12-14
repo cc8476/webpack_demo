@@ -9,7 +9,7 @@ const fs = require('fs');
 
 module.exports = {
 
-
+    devtool: 'source-map',//开启sourcemap
     entry: {
         "index":"./src/index.js",//可以定义多个入口,
         "page":"./src/page.js"

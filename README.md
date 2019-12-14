@@ -9,7 +9,11 @@ npm run build:直接编译
 
 
 todo:
-1.实现sourcemap
+
+
+-----------------------------
+
+1.实现sourcemap   ---done
 2.html-webpack-plugin   --- done 
 3.利用html-webpack-plugin ，配置多入口   ---done 
 4.每次编译前，先清理dist   ---done
