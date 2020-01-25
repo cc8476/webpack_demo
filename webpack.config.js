@@ -19,7 +19,11 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: /src|node_modules[/\\]/,
-                loader: "babel-loader"
+                loader: "babel-loader",
+                options: {
+                    presets: ['@babel/preset-env'],
+                    plugins: ['transform-class-properties']
+                }                
             },
             {
                 test: /\.css$/,
