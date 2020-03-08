@@ -49,7 +49,17 @@ module.exports = {
                       //publicPath: '../'
                     },
                   },
-                  'css-loader',
+                  'css-loader', 
+                  {
+                      loader:'postcss-loader',
+                      options:{
+                          plugins:()=>[
+                              require('autoprefixer')({
+                                  //browsers:['>1%']
+                              })
+                         ]
+                      }
+                  }
                 ],
               },
             
@@ -73,7 +83,7 @@ module.exports = {
         filename: '[name]_[chunkhash:8].js', 
         path: __dirname + "/dist"  //指定资源的输出位置
     },
-    mode: "development",
+    mode: process.env.NODE_ENV,
     plugins:[
         new webpack.BannerPlugin({banner: `development build: ${new Date()}`, entryOnly: true}),
          new htmlWebpackPlugin({   //创建一个在内存中生成html插件
@@ -94,6 +104,14 @@ module.exports = {
             template: path.join(__dirname, '/src/page.html'),  // 指定模板页面, 将来会根据指定的页面路径, 去生成内存中的页面
             filename: 'page.html',  // 指定生成内存中的页面,
             hash: true,  // 生成的.js后面加hash  :bundle.js?93da9c5565a913afd93e
+            minify:{
+                html5:true,
+                collapseWhitespace:true,
+                preserveLineBreaks:false,
+                minifyCSS:true,
+                minifyJS:true,
+                removeComments:true
+            } 
         }), 
     ],
     devServer: {

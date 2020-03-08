@@ -2,4 +2,6 @@ html{
     background: #123321;
     background-image: url('./big.jpg');
     background-repeat: no-repeat;
+    border-radius: 1px;
+    display: flex;
 }
