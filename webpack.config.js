@@ -78,7 +78,7 @@ module.exports = {
         port: 8088,
         open:true,//自动打开浏览器
         openPage: 'dist/index.html',//配置项用于打开指定 URL 的网页
-        //hot: true,  // 启动热更新,
+        hot: true,  // 启动热更新,
         //不启动热更新，仍然会在代码变化时自动刷新，大多数情况下满足需求了
         //启动热更新，目前只能监控js代码，css/html如果不是module的形式，就不能监听变化
         //所以，通常情况下就不设置hot:true
@@ -86,7 +86,7 @@ module.exports = {
         //没有运行自更新的可能2个点：
         //1.如果publicPath写成__dirname+"/dist" 就不行
         //2.应该打开的网址是http://127.0.0.1:8088/dist/index.html
-        //如果变成      http://127.0.0.1:8088/dist/index.html  
+        //如果变成         http://127.0.0.1:8088/dist/index.html  
         //也是不能监控变化的
 
     },
