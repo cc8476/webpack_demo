@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 const fs = require('fs');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
 
@@ -25,7 +26,7 @@ module.exports = {
                     plugins: ['transform-class-properties']
                 }                
             },
-            {
+           /*  {
                 test: /\.css$/,
                 use: [
                      {
@@ -35,7 +36,23 @@ module.exports = {
                          loader: 'css-loader'    // 用于加载css文件（并没有添加到页面
                      }
                 ]
-            },
+            }, */
+
+            {
+                test: /\.css$/,
+                use: [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                      // 这里可以指定一个 publicPath
+                      // 默认使用 webpackOptions.output中的publicPath
+                      //publicPath: '../'
+                    },
+                  },
+                  'css-loader',
+                ],
+              },
+            
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
@@ -52,7 +69,8 @@ module.exports = {
     },
 
     output: {
-        filename: '[name].js',
+        //filename: '[name].js',
+        filename: '[name]_[chunkhash:8].js', 
         path: __dirname + "/dist"  //指定资源的输出位置
     },
     mode: "development",
@@ -63,6 +81,9 @@ module.exports = {
             template: path.join(__dirname, '/src/index.html'),  // 指定模板页面, 将来会根据指定的页面路径, 去生成内存中的页面
             filename: 'index.html',  // 指定生成内存中的页面,
             hash: true,  // 生成的.js后面加hash  :bundle.js?93da9c5565a913afd93e
+        }),
+        new MiniCssExtractPlugin({
+            filename:'[name]_[contenthash:8].css'
         }),
         new htmlWebpackPlugin({   //创建一个在内存中生成html插件
             chunks: ['page'],
