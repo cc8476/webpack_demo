@@ -3,7 +3,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const OptimizeCssPlugin =require('optimize-css-assets-webpack-plugin')
 
 
 //delDir(__dirname+"/dist");//先清空dist目录下文件
@@ -84,6 +84,10 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename:'[name]_[contenthash:8].css'
+        }),
+        new OptimizeCssPlugin({
+            assetNameegExp:/\.css$/g,
+            cssProcessor:require('cssnano')
         }),
         new htmlWebpackPlugin({   //创建一个在内存中生成html插件
             chunks: ['page'],
