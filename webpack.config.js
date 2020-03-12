@@ -80,7 +80,7 @@ module.exports = {
 
     output: {
         //filename: '[name].js',
-        filename: '[name]_[chunkhash:8].js', 
+        filename: '[name]_[hash:8].js', 
         path: __dirname + "/dist"  //指定资源的输出位置
     },
     mode: process.env.NODE_ENV,
